@@ -46,8 +46,8 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           envs: IMAGE
           script: |
-            aws ecr get-login-password --region ${{ env.AWS_REGION }} | \
-              docker login --username AWS --password-stdin ${{ steps.login-ecr.outputs.registry }}
+            aws ecr get-login-password --region eu-north-1 | \
+              docker login --username AWS --password-stdin 074038220305.dkr.ecr.eu-north-1.amazonaws.com
             
             docker stop ${{ env.CONTAINER_NAME }} || true
             docker rm   ${{ env.CONTAINER_NAME }} || true
